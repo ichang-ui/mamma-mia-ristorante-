@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mamma Mia Ristorante | Order</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/script.js" defer></script>
+</head>
+<body data-page="order">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="Mamma Mia Ristorante Home"><img src="assets/images/logo.svg" alt="Mamma Mia Ristorante logo"></a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="rewards.html">Rewards</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a class="nav-cta active" href="order.html">Order</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="page-hero section-padding small-hero">
+      <p class="eyebrow">Order Online</p>
+      <h1>Place Your Order</h1>
+      <p>Complete the form below and our team will prepare your Italian favorites.</p>
+    </section>
+
+    <section class="section-padding order-layout">
+      <form class="order-form" id="orderForm" novalidate>
+        <div class="form-section">
+          <h2>Service Option</h2>
+          <div class="radio-group" aria-label="Service option">
+            <label class="choice-card">
+              <input type="radio" name="service" value="Pick-up">
+              <span>Pick-up</span>
+              <small>Collect from the restaurant counter.</small>
+            </label>
+            <label class="choice-card">
+              <input type="radio" name="service" value="Delivery">
+              <span>Delivery</span>
+              <small>Send the order to your address.</small>
+            </label>
+          </div>
+          <p class="error-message" id="serviceError"></p>
+        </div>
+
+        <div class="form-section form-grid-two">
+          <div class="form-field">
+            <label for="customerName">Full Name</label>
+            <input type="text" id="customerName" name="customerName" autocomplete="name" placeholder="Example: Marco Rossi">
+            <p class="error-message" id="nameError"></p>
+          </div>
+          <div class="form-field">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" inputmode="numeric" autocomplete="tel" placeholder="Example: 081234567890">
+            <p class="error-message" id="phoneError"></p>
+          </div>
+        </div>
+
+        <div class="form-section form-field hidden-field" id="addressBox">
+          <label for="deliveryAddress">Delivery Address</label>
+          <textarea id="deliveryAddress" name="deliveryAddress" rows="3" placeholder="Street, building number, and delivery notes"></textarea>
+          <p class="error-message" id="addressError"></p>
+        </div>
+
+        <div class="form-section form-grid-two">
+          <div class="form-field">
+            <label for="chosenMenu">Chosen Menu</label>
+            <select id="chosenMenu" name="chosenMenu">
+              <option value="">Choose a menu item</option>
+              <option value="Spaghetti Bolognese" data-price="21">Spaghetti Bolognese - $21.00</option>
+              <option value="Carbonara Pasta" data-price="19">Carbonara Pasta - $19.00</option>
+              <option value="Pizza Margherita" data-price="24">Pizza Margherita - $24.00</option>
+              <option value="Mushroom Risotto" data-price="18">Mushroom Risotto - $18.00</option>
+              <option value="Bomboloni" data-price="9">Bomboloni - $9.00</option>
+              <option value="Triple Gelato" data-price="8">Triple Gelato - $8.00</option>
+              <option value="Tiramisu Slice" data-price="10">Tiramisu Slice - $10.00</option>
+            </select>
+            <p class="error-message" id="menuError"></p>
+          </div>
+          <div class="form-field">
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" name="quantity" value="1">
+            <p class="error-message" id="quantityError"></p>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2>Extra Requests</h2>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" name="toppings" value="Extra Cheese" data-extra="2"> Extra Cheese +$2</label>
+            <label><input type="checkbox" name="toppings" value="Mushrooms" data-extra="2"> Mushrooms +$2</label>
+            <label><input type="checkbox" name="toppings" value="Extra Sauce" data-extra="1"> Extra Sauce +$1</label>
+            <label><input type="checkbox" id="utensils" name="utensils" value="Yes"> Add Eating Utensils</label>
+          </div>
+        </div>
+
+        <div class="form-section form-grid-two">
+          <div class="form-field">
+            <label for="paymentMethod">Payment Method</label>
+            <select id="paymentMethod" name="paymentMethod">
+              <option value="">Choose payment</option>
+              <option value="Cash">Cash</option>
+              <option value="Debit Card">Debit Card</option>
+              <option value="Credit Card">Credit Card</option>
+              <option value="QR Payment">QR Payment</option>
+            </select>
+            <p class="error-message" id="paymentError"></p>
+          </div>
+          <div class="form-field">
+            <label for="notes">Order Notes</label>
+            <textarea id="notes" name="notes" rows="3" placeholder="Optional: less spicy, separate sauce, etc."></textarea>
+          </div>
+        </div>
+
+        <div class="form-section agreement-row">
+          <label>
+            <input type="checkbox" id="confirmOrder" name="confirmOrder">
+            I confirm that my order information is correct.
+          </label>
+          <p class="error-message" id="confirmError"></p>
+        </div>
+
+        <button class="button button-primary full-button" type="submit">Submit Order</button>
+        <p class="success-message" id="successMessage"></p>
+      </form>
+
+      <aside class="order-summary" aria-label="Order summary">
+        <h2>Order Summary</h2>
+        <div class="summary-card">
+          <p><span>Menu</span><strong id="summaryMenu">Not selected</strong></p>
+          <p><span>Quantity</span><strong id="summaryQuantity">1</strong></p>
+          <p><span>Extras</span><strong id="summaryExtras">None</strong></p>
+          <p><span>Total</span><strong id="summaryTotal">$0.00</strong></p>
+        </div>
+        <div class="summary-tip">
+          <strong>Tip</strong>
+          <p>Ordering from the Menu Page automatically selects your chosen dish here.</p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div><strong>Mamma Mia Ristorante</strong><p>Traditional Italian dishes, handmade with care.</p></div>
+    <p>© 2026 Mamma Mia Ristorante</p>
+  </footer>
+</body>
+</html>
